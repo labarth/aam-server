@@ -12,25 +12,25 @@ export class ArticlesService {
     @InjectModel(Article.name) private articleModel: Model<ArticleDocument>,
   ) {}
 
-  async getAll(): Promise<Article[]> {
+  async getAll() {
     const articles = await this.articleModel.find();
 
     return articles;
   }
 
-  async getOne(id: ObjectId): Promise<Article> {
+  async getOne(id: ObjectId) {
     const article = await this.articleModel.findById(id);
 
     return article;
   }
 
-  async create(dto: CreateArticleDto): Promise<Article> {
+  async create(dto: CreateArticleDto) {
     const article = await this.articleModel.create(dto);
 
     return article;
   }
 
-  async delete(id: ObjectId): Promise<ObjectId> {
+  async delete(id: ObjectId) {
     const article = await this.articleModel.findByIdAndDelete(id);
 
     return article._id;
