@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ArticleModule } from './article/article.module';
+import { ArticlesModule } from './articles/articles.module';
 import { rootStaticPath } from '../paths';
 
 @Module({
@@ -10,7 +10,7 @@ import { rootStaticPath } from '../paths';
       rootPath: rootStaticPath,
     }),
     MongooseModule.forRoot('mongodb://localhost/aam'),
-    ArticleModule,
+    ArticlesModule,
   ],
   controllers: [],
   providers: [],

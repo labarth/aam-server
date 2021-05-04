@@ -7,14 +7,14 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ArticleService } from './article.service';
-import { CreateArticleDto } from './dto/create-article.dto';
 import { ObjectId } from 'mongoose';
+import { ArticlesService } from './articles.service';
+import { CreateArticleDto } from './dto/create-article.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
 
-@Controller('article')
-export class ArticleController {
-  constructor(private articleService: ArticleService) {}
+@Controller('api/articles')
+export class ArticlesController {
+  constructor(private articleService: ArticlesService) {}
 
   @Get()
   getAll() {
