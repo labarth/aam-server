@@ -1,20 +1,18 @@
-import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { User, UserSchema } from './app.schema';
+import { ArticleModule } from './article/article.module';
+import { rootStaticPath } from '../paths';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),
+      rootPath: rootStaticPath,
     }),
     MongooseModule.forRoot('mongodb://localhost/aam'),
-    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    ArticleModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
