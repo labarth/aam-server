@@ -5,10 +5,13 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ArticlesModule } from './articles/articles.module';
 import { rootStaticPath } from '../paths';
 import { UsersModule } from './users/users.module';
+import { isProdEnv } from './utils/env';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: isProdEnv ? '.env.production' : '.env.development',
+    }),
     ServeStaticModule.forRoot({
       rootPath: rootStaticPath,
     }),
