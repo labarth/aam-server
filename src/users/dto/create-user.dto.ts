@@ -20,7 +20,7 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @IsString()
-  @MinLength(8)
+  @MinLength(3)
   @MaxLength(20)
   readonly password: string;
 }
